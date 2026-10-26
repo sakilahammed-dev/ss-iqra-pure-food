@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>SS Iqra Pure Food - অর্ডার কনফার্মেশন</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0F5132;
+      --primary-light: #157347;
+      --primary-soft: #D1E7DD;
+      --amber: #D97706;
+      --amber-dark: #B45309;
+      --amber-light: #FEF3C7;
+      --dark: #1E293B;
+      --gray-bg: #F8FAFC;
+      --card-bg: #FFFFFF;
+      --border: #E2E8F0;
+      --text-muted: #64748B;
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.03);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Hind Siliguri', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: var(--gray-bg);
+      color: var(--dark);
+      padding: 12px 12px 40px 12px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 480px;
+    }
+
+    /* Brand Header */
+    .brand-header {
+      text-align: center;
+      padding: 16px 0 12px 0;
+    }
+
+    .brand-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--primary-soft);
+      color: var(--primary);
+      padding: 4px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .brand-title {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--primary);
+      letter-spacing: -0.3px;
+    }
+
+    .brand-subtitle {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    /* Product Card */
+    .product-card {
+      background: var(--card-bg);
+      border-radius: var(--radius-md);
+      padding: 18px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      margin-bottom: 16px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .product-header {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .product-icon {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, #FEF3C7, #FDE68A);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      flex-shrink: 0;
+      border: 1px solid #FCD34D;
+    }
+
+    .product-info h3 {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--dark);
+      line-height: 1.35;
+    }
+
+    .price-box {
+      margin-top: 4px;
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+    }
+
+    .current-price {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .regular-price {
+      font-size: 14px;
+      color: var(--text-muted);
+      text-decoration: line-through;
+    }
+
+    .save-badge {
+      font-size: 11px;
+      background: #DC2626;
+      color: white;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+
+    .trust-bullets {
+      background: #F8FAFC;
+      border-radius: var(--radius-sm);
+      padding: 10px 12px;
+      font-size: 12px;
+      color: #334155;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      border-left: 3px solid var(--primary);
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Order Form */
+    .form-card {
+      background: var(--card-bg);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+
+    .form-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .form-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 18px;
+    }
+
+    .form-group {
+      margin-bottom: 14px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: #334155;
+      margin-bottom: 6px;
+    }
+
+    .form-label span.req {
+      color: #DC2626;
+    }
+
+    .form-control {
+      width: 100%;
+      height: 46px;
+      padding: 10px 14px;
+      font-size: 14px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-sm);
+      outline: none;
+      transition: all 0.2s ease;
+      background: #FAFAFA;
+    }
+
+    .form-control:focus {
+      border-color: var(--primary);
+      background: #FFFFFF;
+      box-shadow: 0 0 0 3px rgba(15, 81, 50, 0.1);
+    }
+
+    textarea.form-control {
+      height: 72px;
+      resize: vertical;
+    }
+
+    /* Delivery Option Radios */
+    .delivery-options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 4px;
+    }
+
+    .delivery-radio {
+      position: relative;
+    }
+
+    .delivery-radio input {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .radio-card {
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 12px 10px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      background: #FAFAFA;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .radio-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--dark);
+    }
+
+    .radio-charge {
+      font-size: 12px;
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    .delivery-radio input:checked + .radio-card {
+      border-color: var(--primary);
+      background: var(--primary-soft);
+      box-shadow: 0 0 0 1px var(--primary);
+    }
+
+    /* Billing Summary */
+    .bill-summary {
+      background: #F1F5F9;
+      border-radius: var(--radius-sm);
+      padding: 14px;
+      margin: 18px 0 16px 0;
+    }
+
+    .bill-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      color: #475569;
+      margin-bottom: 6px;
+    }
+
+    .bill-row.total {
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px dashed #CBD5E1;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--dark);
+    }
+
+    .total-amount {
+      color: var(--primary);
+      font-size: 20px;
+    }
+
+    /* High-Impact Eye-Catching Submit Button */
+    .btn-submit {
+      width: 100%;
+      height: 56px;
+      background: linear-gradient(135deg, #D97706, #B45309);
+      color: #FFFFFF;
+      border: 2px solid #FCD34D;
+      border-radius: var(--radius-sm);
+      font-size: 17px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: 0 6px 20px rgba(217, 119, 6, 0.35);
+      transition: all 0.2s ease;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn-submit:hover {
+      background: linear-gradient(135deg, #B45309, #92400E);
+      box-shadow: 0 8px 25px rgba(217, 119, 6, 0.5);
+    }
+
+    .btn-submit:active {
+      transform: scale(0.98);
+    }
+
+    .btn-submit:disabled {
+      background: #94A3B8;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+
+    .security-note {
+      text-align: center;
+      font-size: 11.5px;
+      color: var(--text-muted);
+      margin-top: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+    }
+
+    /* Thank You State */
+    .success-container {
+      display: none;
+      background: var(--card-bg);
+      border-radius: var(--radius-md);
+      padding: 32px 20px;
+      text-align: center;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+
+    .success-icon {
+      width: 70px;
+      height: 70px;
+      background: #DCFCE7;
+      color: #16A34A;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 36px;
+      margin: 0 auto 16px auto;
+    }
+
+    .success-title {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 6px;
+    }
+
+    .success-desc {
+      font-size: 14px;
+      color: #475569;
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+
+    .order-invoice-card {
+      background: #F8FAFC;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 14px;
+      font-size: 13px;
+      text-align: left;
+      margin-bottom: 20px;
+    }
+
+    .order-invoice-card div {
+      margin-bottom: 4px;
+    }
+
+    .btn-whatsapp-direct {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: #25D366;
+      color: white;
+      text-decoration: none;
+      width: 100%;
+      height: 48px;
+      border-radius: var(--radius-sm);
+      font-weight: 700;
+      font-size: 15px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- Header -->
+  <div class="brand-header">
+    <div class="brand-badge">🌿 ১০০% প্রাকৃতিক ও স্বাস্থ্যকর</div>
+    <h1 class="brand-title">SS Iqra Pure Food</h1>
+    <p class="brand-subtitle">এস এস ইকরা পিওর ফুড — খাঁটি খাদ্যের বিশ্বস্ত ঠিকানা</p>
+  </div>
+
+  <!-- Form Container -->
+  <div id="orderFormWrapper">
+    <!-- Product Showcase -->
+    <div class="product-card">
+      <div class="product-header">
+        <div class="product-icon">🍯</div>
+        <div class="product-info">
+          <h3>১ কেজি মেগা ফ্যামিলি জার হানি-নাট</h3>
+          <div class="price-box">
+            <span class="current-price">৳৮৯০</span>
+            <span class="regular-price">৳১,১৫০</span>
+            <span class="save-badge">৳২৬০ ছাড়!</span>
+          </div>
+        </div>
+      </div>
+      <div class="trust-bullets">
+        <div class="trust-item">✅ <strong>উপাদান:</strong> সুন্দরবনের খাঁটি কাঁচা মধু + ১২+ প্রিমিয়াম ড্রাই ফ্রুটস ও বাদাম</div>
+        <div class="trust-item">✅ <strong>নিরাপত্তা:</strong> পার্সেল খুলে চেক করে দেখে মূল্য পরিশোধ করবেন</div>
+        <div class="trust-item">✅ <strong>পেমেন্ট:</strong> ১০০% ক্যাশ অন ডেলিভারি (জিরো অগ্রিম চার্জ)</div>
+      </div>
+    </div>
+
+    <!-- The Order Form -->
+    <div class="form-card">
+      <div class="form-title">
+        <span>📍</span> ডেলিভারির তথ্য দিন
+      </div>
+      <p class="form-desc">নিচের তথ্যগুলো দিয়ে নিশ্চিত করুন, আমাদের প্রতিনিধি দ্রুত যোগাযোগ করবে।</p>
+
+      <form id="orderForm" onsubmit="handleOrderSubmit(event)">
+        <!-- Name -->
+        <div class="form-group">
+          <label class="form-label" for="custName">আপনার পূর্ণ নাম <span class="req">*</span></label>
+          <input type="text" id="custName" class="form-control" placeholder="যেমন: মোঃ আরিফুল ইসলাম" required>
+        </div>
+
+        <!-- Phone -->
+        <div class="form-group">
+          <label class="form-label" for="custPhone">সচল মোবাইল নম্বর <span class="req">*</span></label>
+          <input type="tel" id="custPhone" class="form-control" placeholder="যেমন: 017XXXXXXXX" pattern="^(01[3-9]\d{8})$" title="দয়া করে সঠিক ১১ ডিজিটের মোবাইল নম্বর দিন (যেমন: 01712345678)" required>
+        </div>
+
+        <!-- Delivery Area -->
+        <div class="form-group">
+          <label class="form-label">ডেলিভারি এলাকা নির্বাচন করুন <span class="req">*</span></label>
+          <div class="delivery-options">
+            <label class="delivery-radio">
+              <input type="radio" name="deliveryArea" value="dhaka" checked onchange="updateBill()">
+              <div class="radio-card">
+                <span class="radio-title">ঢাকা সিটি</span>
+                <span class="radio-charge">চার্জ: ৳৮০</span>
+              </div>
+            </label>
+            <label class="delivery-radio">
+              <input type="radio" name="deliveryArea" value="outside" onchange="updateBill()">
+              <div class="radio-card">
+                <span class="radio-title">ঢাকার বাইরে</span>
+                <span class="radio-charge">চার্জ: ৳১৫০</span>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <!-- Address -->
+        <div class="form-group">
+          <label class="form-label" for="custAddress">সম্পূর্ণ ডেলিভারি ঠিকানা <span class="req">*</span></label>
+          <textarea id="custAddress" class="form-control" placeholder="বাসা/রোড নম্বর, এলাকা, থানা ও জেলা উল্লেখ করুন..." required></textarea>
+        </div>
+
+        <!-- Special Note -->
+        <div class="form-group">
+          <label class="form-label" for="custNote">বিশেষ কোনো নোট (ঐচ্ছিক)</label>
+          <input type="text" id="custNote" class="form-control" placeholder="যেমন: সন্ধ্যার পর ডেলিভারি দিলে ভালো হয়">
+        </div>
+
+        <!-- Bill Breakdown -->
+        <div class="bill-summary">
+          <div class="bill-row">
+            <span>১ কেজি হানি-নাট মেগা জার:</span>
+            <span id="productPriceText">৳৮৯০</span>
+          </div>
+          <div class="bill-row">
+            <span>ডেলিভারি চার্জ:</span>
+            <span id="deliveryChargeText">৳৮০</span>
+          </div>
+          <div class="bill-row total">
+            <span>সর্বমোট ক্যাশ অন ডেলিভারি বিল:</span>
+            <span class="total-amount" id="totalBillText">৳৯৭০</span>
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" id="submitBtn" class="btn-submit">
+          <span>🍯</span> <span id="submitBtnText">ক্যাশ অন ডেলিভারিতে অর্ডার কনফার্ম করুন</span>
+        </button>
+
+        <div class="security-note">
+          🔒 আপনার ব্যক্তিগত তথ্য সম্পূর্ণ সুরক্ষিত থাকবে
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Success Screen -->
+  <div id="successCard" class="success-container">
+    <div class="success-icon">✓</div>
+    <h2 class="success-title">জাযাকাল্লাহু খাইরান!</h2>
+    <p class="success-desc">আপনার অর্ডারটি সফলভাবে গ্রহণ করা হয়েছে। আমাদের প্রতিনিধি দ্রুত কল দিয়ে আপনার অর্ডারটি চূড়ান্ত করবেন ইনশাআল্লাহ।</p>
+
+    <div class="order-invoice-card" id="invoiceDetails">
+      <!-- Populated via JS -->
+    </div>
+
+    <a href="https://wa.me/8801839611048" class="btn-whatsapp-direct" target="_blank">
+      💬 সরাসরি হোয়াটসঅ্যাপে যোগাযোগ (01839611048)
+    </a>
+  </div>
+
+</div>
+
+<script>
+  // Configuration
+  const BOT_TOKEN = "8994135697:AAGIj-8CYdXsZnDp1XK3pK9ngE33wu27H74";
+  const ADMIN_CHAT_ID = "8740322769";
+  const BASE_PRICE = 890;
+
+  function updateBill() {
+    const isDhaka = document.querySelector('input[name="deliveryArea"]:checked').value === "dhaka";
+    const charge = isDhaka ? 80 : 150;
+    const total = BASE_PRICE + charge;
+
+    document.getElementById("deliveryChargeText").innerText = "৳" + charge;
+    document.getElementById("totalBillText").innerText = "৳" + total;
+    document.getElementById("submitBtnText").innerText = "ক্যাশ অন ডেলিভারিতে অর্ডার কনফার্ম করুন (৳" + total + ")";
+  }
+
+  // Initialize Bill
+  updateBill();
+
+  function escapeHtml(str) {
+    if (!str) return '';
+    return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  }
+
+  async function handleOrderSubmit(e) {
+    e.preventDefault();
+    const btn = document.getElementById("submitBtn");
+    btn.disabled = true;
+    btn.innerHTML = "<span>⏳</span> প্রসেসিং হচ্ছে, দয়া করে অপেক্ষা করুন...";
+
+    const name = document.getElementById("custName").value.trim();
+    const phone = document.getElementById("custPhone").value.trim();
+    const address = document.getElementById("custAddress").value.trim();
+    const note = document.getElementById("custNote").value.trim() || "কোনো বিশেষ নোট নেই";
+    const isDhaka = document.querySelector('input[name="deliveryArea"]:checked').value === "dhaka";
+    const charge = isDhaka ? 80 : 150;
+    const total = BASE_PRICE + charge;
+    const areaName = isDhaka ? "ঢাকা সিটি (৮০ টাকা)" : "ঢাকার বাইরে (১৫০ টাকা)";
+    const invoiceId = "SS-" + Math.floor(100000 + Math.random() * 900000);
+
+    // Clean phone for WhatsApp button
+    let cleanPhone = phone.replace(/[\s-]/g, "");
+    if (cleanPhone.startsWith("01")) cleanPhone = "88" + cleanPhone;
+
+    // Telegram Alert Message with bulletproof HTML formatting
+    const tgMessage = 
+      `🔔 <b>নতুন অনলাইন অর্ডারের নোটিফিকেশন! (SS Iqra Pure Food)</b>\n` +
+      `━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n` +
+      `📦 <b>ইনভয়েস আইডি:</b> <code>#${invoiceId}</code>\n` +
+      `🍯 <b>পণ্য:</b> ১ কেজি মেগা ফ্যামিলি জার হানি-নাট\n` +
+      `💰 <b>ক্যাশ অন ডেলিভারি বিল:</b> ৳${total} (চার্জ: ৳${charge})\n` +
+      `👤 <b>কাস্টমার:</b> ${escapeHtml(name)}\n` +
+      `📞 <b>মোবাইল:</b> <code>${phone}</code>\n` +
+      `📍 <b>ঠিকানা:</b> ${escapeHtml(address)}\n` +
+      `🚚 <b>এলাকা:</b> ${escapeHtml(areaName)}\n` +
+      `📝 <b>নোট:</b> ${escapeHtml(note)}\n` +
+      `━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n` +
+      `💡 <b>স্ট্যাটাস:</b> ⏳ অপেক্ষা করছে (কল দিয়ে কনফার্ম করুন)`;
+
+    const keyboard = {
+      inline_keyboard: [
+        [
+          { text: "💬 WhatsApp-এ চ্যাট করুন", url: `https://wa.me/${cleanPhone}` }
+        ],
+        [
+          { text: "📋 Steadfast বুকিং স্লিপ", callback_data: `sf_view_${invoiceId}` },
+          { text: "✅ অর্ডার কনফার্মড", callback_data: `sf_confirm_${invoiceId}` }
+        ]
+      ]
+    };
+
+    try {
+      // Direct CORS Telegram API Call
+      const res = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          chat_id: ADMIN_CHAT_ID,
+          text: tgMessage,
+          parse_mode: "HTML",
+          reply_markup: keyboard
+        })
+      });
+
+      const resData = await res.json();
+      console.log("Telegram Response:", resData);
+
+      // Show Success View
+      document.getElementById("orderFormWrapper").style.display = "none";
+      document.getElementById("successCard").style.display = "block";
+      document.getElementById("invoiceDetails").innerHTML = `
+        <div><strong>ইনভয়েস নম্বর:</strong> #${invoiceId}</div>
+        <div><strong>গ্রাহকের নাম:</strong> ${name}</div>
+        <div><strong>মোবাইল নম্বর:</strong> ${phone}</div>
+        <div><strong>পণ্য:</strong> ১ কেজি মেগা ফ্যামিলি জার হানি-নাট</div>
+        <div><strong>মোট প্রদেয় বিল:</strong> ৳${total} (ক্যাশ অন ডেলিভারি)</div>
+        <div><strong>ঠিকানা:</strong> ${address}</div>
+      `;
+
+      // Scroll to top
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    } catch (err) {
+      console.error("Order submission error:", err);
+      alert("দুঃখিত, সংযোগে কিছুটা সমস্যা হয়েছে। দয়া করে সরাসরি আমাদের হটলাইনে কল দিন: 01839611048");
+      btn.disabled = false;
+      btn.innerHTML = `<span>🍯</span> <span>ক্যাশ অন ডেলিভারিতে অর্ডার কনফার্ম করুন (৳${total})</span>`;
+    }
+  }
+</script>
+
+</body>
+</html>
