@@ -92,29 +92,29 @@ def send_order_notification(order: dict) -> bool:
         wa_phone = clean_phone
 
     text = (
-        f"🔔 *নতুন অর্ডারের নোটিফিকেশন! (SS Iqra Pure Food)*\n"
+        f"[ORDER ALERT] নতুন অর্ডারের নোটিফিকেশন (SS Iqra Pure Food)\n"
         f"━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
-        f"📦 *ইনভয়েস আইডি:* `#{invoice}`\n"
-        f"🍯 *পণ্য:* {product}\n"
-        f"💰 *ক্যাশ অন ডেলিভারি বিল:* ৳{cod_amount}\n"
-        f"👤 *কাস্টমার:* {name}\n"
-        f"📞 *মোবাইল:* `{phone}`\n"
-        f"📍 *ঠিকানা:* {address}\n"
-        f"📝 *বিশেষ নোট:* {note}\n"
+        f"*ইনভয়েস আইডি:* `#{invoice}`\n"
+        f"*পণ্য:* {product}\n"
+        f"*ক্যাশ অন ডেলিভারি বিল:* ৳{cod_amount}\n"
+        f"*কাস্টমার:* {name}\n"
+        f"*মোবাইল:* `{phone}`\n"
+        f"*ঠিকানা:* {address}\n"
+        f"*বিশেষ নোট:* {note}\n"
         f"━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
-        f"💡 *স্ট্যাটাস:* ⏳ অপেক্ষা করছে (কল কনফার্মেশন ও বুকিং)\n"
-        f"📌 *পদক্ষেপ:* কাস্টমারকে কল দিয়ে অর্ডারটি চূড়ান্ত করুন।"
+        f"*স্ট্যাটাস:* পেন্ডিং (কল কনফার্মেশন ও বুকিং)\n"
+        f"*পরবর্তী পদক্ষেপ:* কাস্টমারকে কল দিয়ে অর্ডারটি চূড়ান্ত করুন।"
     )
 
     # Inline Keyboard with Actions
     keyboard = {
         "inline_keyboard": [
             [
-                {"text": "💬 WhatsApp-এ চ্যাট করুন", "url": f"https://wa.me/{wa_phone}"}
+                {"text": "WhatsApp-এ চ্যাট করুন", "url": f"https://wa.me/{wa_phone}"}
             ],
             [
-                {"text": "📋 Steadfast বুকিং স্লিপ দেখুন", "callback_data": f"sf_view_{invoice}"},
-                {"text": "✅ অর্ডার কনফার্মড", "callback_data": f"sf_confirm_{invoice}"}
+                {"text": "Steadfast বুকিং স্লিপ দেখুন", "callback_data": f"sf_view_{invoice}"},
+                {"text": "অর্ডার কনফার্মড", "callback_data": f"sf_confirm_{invoice}"}
             ]
         ]
     }
@@ -261,16 +261,16 @@ def format_steadfast_copy_paste(order: dict) -> str:
     product = order.get("product", "১ কেজি হানি-নাট মেগা জার")
 
     slip = (
-        f"📦 *Steadfast অ্যাপ/ওয়েবে বুকিং স্লিপ (Copy-Ready):*\n"
+        f"*Steadfast অ্যাপ/ওয়েবে বুকিং স্লিপ (Copy-Ready):*\n"
         f"━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
-        f"👤 *নাম:* `{name}`\n"
-        f"📞 *ফোন:* `{phone}`\n"
-        f"📍 *ঠিকানা:* `{address}`\n"
-        f"💵 *ক্যাশ কালেকশন (COD):* `{cod}`\n"
-        f"🏷️ *ইনভয়েস:* `{invoice}`\n"
-        f"📝 *নোট:* `{product} (চেক করে মূল্য পরিশোধ করবে)`\n"
+        f"*নাম:* `{name}`\n"
+        f"*ফোন:* `{phone}`\n"
+        f"*ঠিকানা:* `{address}`\n"
+        f"*ক্যাশ কালেকশন (COD):* `{cod}`\n"
+        f"*ইনভয়েস:* `{invoice}`\n"
+        f"*নোট:* `{product} (চেক করে মূল্য পরিশোধ করবে)`\n"
         f"━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
-        f"👉 *টিপ:* উপরের যেকোনো তথ্যে চাপ দিলে তা সরাসরি মোবাইলে কপি হয়ে যাবে!"
+        f"*নির্দেশনা:* উপরের যেকোনো তথ্যে চাপ দিলে তা সরাসরি মোবাইলে কপি হয়ে যাবে!"
     )
     return slip
 
@@ -423,14 +423,14 @@ def handle_callback_query(callback: dict):
         if order:
             sheet_synced = send_to_google_sheets(order)
 
-        sheet_note = "\n☁️ Google Sheets হিসাব খাতায় রিয়েল-টাইমে সংরক্ষিত হয়েছে!" if sheet_synced else ""
+        sheet_note = "\nGoogle Sheets হিসাব খাতায় রিয়েল-টাইমে সংরক্ষিত হয়েছে!" if sheet_synced else ""
         
         confirm_text = (
-            f"✅ *অর্ডার #{invoice} কনফার্মড! হিসেবে চিহ্নিত করা হয়েছে!*\n"
+            f"*অর্ডার #{invoice} কনফার্মড! হিসেবে চিহ্নিত করা হয়েছে!*\n"
             f"━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
-            f"👤 শাকিল ভাই গ্রাহকের সাথে কথা বলে অর্ডারটি নিশ্চিত করেছেন।\n"
-            f"📊 আপনার হিসাব ফাইলে স্ট্যাটাস আপডেট হয়ে গেছে।{sheet_note}\n"
-            f"🚚 পার্সেলটি প্রস্তুত করে Steadfast কুরিয়ারে বুকিং দিয়ে দিন।"
+            f"গ্রাহকের সাথে কথা বলে অর্ডারটি নিশ্চিত করা হয়েছে।\n"
+            f"হিসাব ফাইলে স্ট্যাটাস আপডেট সম্পন্ন হয়েছে।{sheet_note}\n"
+            f"পার্সেলটি প্রস্তুত করে Steadfast কুরিয়ারে বুকিং সম্পন্ন করুন।"
         )
         send_telegram_request("sendMessage", {
             "chat_id": chat_id,
@@ -467,7 +467,7 @@ def run_telegram_listener():
     Long polling listener to process callback queries in real-time.
     """
     print("=" * 60)
-    print("🤖 SS Iqra Pure Food - Telegram Bot Listener Active!")
+    print("[ONLINE] SS Iqra Pure Food - Telegram Bot Listener Active")
     print(f"Bot: @ssiqrapurefood_bot | Admin Chat ID: {ADMIN_CHAT_ID}")
     print("Listening for button clicks (WhatsApp, Steadfast Slip, Confirm)...")
     print("Press Ctrl+C to stop.")
@@ -493,7 +493,7 @@ def run_telegram_listener():
                             send_telegram_request("sendMessage", {
                                 "chat_id": ADMIN_CHAT_ID,
                                 "text": (
-                                    "💚 *আসসালামু আলাইকুম শাকিল ভাই!*\n\n"
+                                    " *আসসালামু আলাইকুম শাকিল ভাই!*\n\n"
                                     "আপনার SS Iqra Pure Food অর্ডার অটোমেশন পাইপলাইন ১০০% চালু আছে!\n"
                                     "মেসেঞ্জারে কোনো কাস্টমার অর্ডার করা মাত্র এখানে নোটিফিকেশন চলে আসবে ইনশাআল্লাহ।"
                                 ),
@@ -529,7 +529,7 @@ if __name__ == "__main__":
         }
         success = send_order_notification(sample_order)
         if success:
-            print("\n✅ লাইভ নোটিফিকেশন সফলভাবে পাঠানো হয়েছে!")
+            print("\n[SUCCESS] লাইভ নোটিফিকেশন সফলভাবে পাঠানো হয়েছে!")
             print("আপনার মোবাইলে বা পিসিতে Telegram অ্যাপ চেক করুন।")
             print("To start the interactive button listener, run:")
             print("python telegram_order_manager.py --listen")
