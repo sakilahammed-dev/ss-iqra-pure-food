@@ -428,7 +428,7 @@
 
   <!-- Header -->
   <div class="brand-header">
-    <div class="brand-badge">🌿 ১০০% প্রাকৃতিক ও স্বাস্থ্যকর</div>
+    <div class="brand-badge"> ১০০% প্রাকৃতিক ও স্বাস্থ্যকর</div>
     <h1 class="brand-title">SS Iqra Pure Food</h1>
     <p class="brand-subtitle">এস এস ইকরা পিওর ফুড — খাঁটি খাদ্যের বিশ্বস্ত ঠিকানা</p>
   </div>
@@ -438,7 +438,7 @@
     <!-- Product Showcase -->
     <div class="product-card">
       <div class="product-header">
-        <div class="product-icon">🍯</div>
+        <div class="product-icon"></div>
         <div class="product-info">
           <h3>১ কেজি মেগা ফ্যামিলি জার হানি-নাট</h3>
           <div class="price-box">
@@ -449,16 +449,16 @@
         </div>
       </div>
       <div class="trust-bullets">
-        <div class="trust-item">✅ <strong>উপাদান:</strong> সুন্দরবনের খাঁটি কাঁচা মধু + ১২+ প্রিমিয়াম ড্রাই ফ্রুটস ও বাদাম</div>
-        <div class="trust-item">✅ <strong>নিরাপত্তা:</strong> পার্সেল খুলে চেক করে দেখে মূল্য পরিশোধ করবেন</div>
-        <div class="trust-item">✅ <strong>পেমেন্ট:</strong> ১০০% ক্যাশ অন ডেলিভারি (জিরো অগ্রিম চার্জ)</div>
+        <div class="trust-item"> <strong>উপাদান:</strong> সুন্দরবনের খাঁটি কাঁচা মধু + ১২+ প্রিমিয়াম ড্রাই ফ্রুটস ও বাদাম</div>
+        <div class="trust-item"> <strong>নিরাপত্তা:</strong> পার্সেল খুলে চেক করে দেখে মূল্য পরিশোধ করবেন</div>
+        <div class="trust-item"> <strong>পেমেন্ট:</strong> ১০০% ক্যাশ অন ডেলিভারি (জিরো অগ্রিম চার্জ)</div>
       </div>
     </div>
 
     <!-- The Order Form -->
     <div class="form-card">
       <div class="form-title">
-        <span>📍</span> ডেলিভারির তথ্য দিন
+        ডেলিভারির তথ্য দিন
       </div>
       <p class="form-desc">নিচের তথ্যগুলো দিয়ে নিশ্চিত করুন, আমাদের প্রতিনিধি দ্রুত যোগাযোগ করবে।</p>
 
@@ -526,11 +526,11 @@
 
         <!-- Submit Button -->
         <button type="submit" id="submitBtn" class="btn-submit">
-          <span>🍯</span> <span id="submitBtnText">ক্যাশ অন ডেলিভারিতে অর্ডার কনফার্ম করুন</span>
+          <span id="submitBtnText">ক্যাশ অন ডেলিভারিতে অর্ডার কনফার্ম করুন</span>
         </button>
 
         <div class="security-note">
-          🔒 আপনার ব্যক্তিগত তথ্য সম্পূর্ণ সুরক্ষিত থাকবে
+           আপনার ব্যক্তিগত তথ্য সম্পূর্ণ সুরক্ষিত থাকবে
         </div>
       </form>
     </div>
@@ -547,7 +547,7 @@
     </div>
 
     <a href="https://wa.me/8801839611048" class="btn-whatsapp-direct" target="_blank">
-      💬 সরাসরি হোয়াটসঅ্যাপে যোগাযোগ (01839611048)
+       সরাসরি হোয়াটসঅ্যাপে যোগাযোগ (01839611048)
     </a>
   </div>
 
@@ -581,7 +581,7 @@
     e.preventDefault();
     const btn = document.getElementById("submitBtn");
     btn.disabled = true;
-    btn.innerHTML = "<span>⏳</span> প্রসেসিং হচ্ছে, দয়া করে অপেক্ষা করুন...";
+    btn.innerHTML = "প্রসেসিং হচ্ছে, দয়া করে অপেক্ষা করুন...";
 
     const name = document.getElementById("custName").value.trim();
     const phone = document.getElementById("custPhone").value.trim();
@@ -599,27 +599,27 @@
 
     // Telegram Alert Message with bulletproof HTML formatting
     const tgMessage = 
-      `🔔 <b>নতুন অনলাইন অর্ডারের নোটিফিকেশন! (SS Iqra Pure Food)</b>\n` +
+      ` <b>নতুন অনলাইন অর্ডারের নোটিফিকেশন! (SS Iqra Pure Food)</b>\n` +
       `━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n` +
-      `📦 <b>ইনভয়েস আইডি:</b> <code>#${invoiceId}</code>\n` +
-      `🍯 <b>পণ্য:</b> ১ কেজি মেগা ফ্যামিলি জার হানি-নাট\n` +
-      `💰 <b>ক্যাশ অন ডেলিভারি বিল:</b> ৳${total} (চার্জ: ৳${charge})\n` +
-      `👤 <b>কাস্টমার:</b> ${escapeHtml(name)}\n` +
-      `📞 <b>মোবাইল:</b> <code>${phone}</code>\n` +
-      `📍 <b>ঠিকানা:</b> ${escapeHtml(address)}\n` +
-      `🚚 <b>এলাকা:</b> ${escapeHtml(areaName)}\n` +
-      `📝 <b>নোট:</b> ${escapeHtml(note)}\n` +
+      ` <b>ইনভয়েস আইডি:</b> <code>#${invoiceId}</code>\n` +
+      ` <b>পণ্য:</b> ১ কেজি মেগা ফ্যামিলি জার হানি-নাট\n` +
+      ` <b>ক্যাশ অন ডেলিভারি বিল:</b> ৳${total} (চার্জ: ৳${charge})\n` +
+      ` <b>কাস্টমার:</b> ${escapeHtml(name)}\n` +
+      ` <b>মোবাইল:</b> <code>${phone}</code>\n` +
+      ` <b>ঠিকানা:</b> ${escapeHtml(address)}\n` +
+      ` <b>এলাকা:</b> ${escapeHtml(areaName)}\n` +
+      ` <b>নোট:</b> ${escapeHtml(note)}\n` +
       `━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n` +
-      `💡 <b>স্ট্যাটাস:</b> ⏳ অপেক্ষা করছে (কল দিয়ে কনফার্ম করুন)`;
+      ` <b>স্ট্যাটাস:</b>  অপেক্ষা করছে (কল দিয়ে কনফার্ম করুন)`;
 
     const keyboard = {
       inline_keyboard: [
         [
-          { text: "💬 WhatsApp-এ চ্যাট করুন", url: `https://wa.me/${cleanPhone}` }
+          { text: " WhatsApp-এ চ্যাট করুন", url: `https://wa.me/${cleanPhone}` }
         ],
         [
-          { text: "📋 Steadfast বুকিং স্লিপ", callback_data: `sf_view_${invoiceId}` },
-          { text: "✅ অর্ডার কনফার্মড", callback_data: `sf_confirm_${invoiceId}` }
+          { text: " Steadfast বুকিং স্লিপ", callback_data: `sf_view_${invoiceId}` },
+          { text: " অর্ডার কনফার্মড", callback_data: `sf_confirm_${invoiceId}` }
         ]
       ]
     };
@@ -659,7 +659,7 @@
       console.error("Order submission error:", err);
       alert("দুঃখিত, সংযোগে কিছুটা সমস্যা হয়েছে। দয়া করে সরাসরি আমাদের হটলাইনে কল দিন: 01839611048");
       btn.disabled = false;
-      btn.innerHTML = `<span>🍯</span> <span>ক্যাশ অন ডেলিভারিতে অর্ডার কনফার্ম করুন (৳${total})</span>`;
+      btn.innerHTML = `<span>ক্যাশ অন ডেলিভারিতে অর্ডার কনফার্ম করুন (৳${total})</span>`;
     }
   }
 </script>

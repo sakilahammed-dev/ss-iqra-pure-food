@@ -1,4 +1,4 @@
-# 🤖 SS IqraTech: ফেসবুক মেসেজিং ও স্বয়ংক্রিয় উত্তর সেটআপ (Meta Business Suite Automation)
+#  SS IqraTech: ফেসবুক মেসেজিং ও স্বয়ংক্রিয় উত্তর সেটআপ (Meta Business Suite Automation)
 
 Meta Business Suite-এর **Inbox -> Automations** অপশনে গিয়ে নিচের টেক্সটগুলো হুবহু সেট করে নিতে পারবেন:
 
